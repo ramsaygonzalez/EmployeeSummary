@@ -10,10 +10,13 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+//Storing team members
 const teamMembers = [];
 
+//Initiate user input prompt to gather team makeup
 getTeamInfo()
 
+//Initial function to gather manager info and initially prompt user for additional team member type
 function getTeamInfo() {
     inquirer.prompt([
         {
@@ -39,10 +42,12 @@ function getTeamInfo() {
 
     ]
     ).then(function (data) {
+        //assigns role and adds user inputs to team member array
         data["role"] = "Manager";
         teamMembers.push(data);
 
     }).then(function () {
+        //ask the user if he/she would like to add additional inputs.
         inquirer.prompt([
             {
                 type: "list",
@@ -64,9 +69,8 @@ function getTeamInfo() {
 
             }
             else {
-                return console.log("Your team has been successfully created!!!"),
-                render(teamMembers),
-                console.log(teamMembers)
+                return console.log(teamMembers)
+                render(teamMembers)
             }
         })
     })
@@ -121,9 +125,9 @@ function getEngineerInfo() {
 
             }
             else {
-                return console.log("Your team has been successfully created!!!"),
-                render(teamMembers),
-                console.log(teamMembers)
+                return console.log(teamMembers)
+                render(teamMembers)
+
             }
         })
     })
@@ -178,9 +182,8 @@ function getInternInfo() {
 
             }
             else {
-                return console.log("Your team has been successfully created!!!"),
-                render(teamMembers),
-                console.log(teamMembers)
+                return console.log(teamMembers)
+                render(teamMembers)
             }
         })
     })
