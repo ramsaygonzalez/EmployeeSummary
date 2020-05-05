@@ -64,7 +64,9 @@ function getTeamInfo() {
 
             }
             else {
-                return console.log("Your team has been successfully created!!!")
+                return console.log("Your team has been successfully created!!!"),
+                render(teamMembers),
+                console.log(teamMembers)
             }
         })
     })
@@ -119,7 +121,9 @@ function getEngineerInfo() {
 
             }
             else {
-                return console.log("Your team has been successfully created!!!")
+                return console.log("Your team has been successfully created!!!"),
+                render(teamMembers),
+                console.log(teamMembers)
             }
         })
     })
@@ -174,7 +178,9 @@ function getInternInfo() {
 
             }
             else {
-                return console.log("Your team has been successfully created!!!")
+                return console.log("Your team has been successfully created!!!"),
+                render(teamMembers),
+                console.log(teamMembers)
             }
         })
     })
