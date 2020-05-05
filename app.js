@@ -10,7 +10,175 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const teamMembers = [];
 
+getTeamInfo()
+
+function getTeamInfo() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is your manager's name?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is your manager's id?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is your manager's email?"
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "What is your manager's office number?"
+        },
+
+    ]
+    ).then(function (data) {
+        data["role"] = "Manager";
+        teamMembers.push(data);
+
+    }).then(function () {
+        inquirer.prompt([
+            {
+                type: "list",
+                message: "Which type of team member would you like to add?",
+                name: "teamType",
+                choices: [
+                    "Engineer",
+                    "Intern",
+                    "I dont want to add any more team members"
+                ]
+            }
+        ]).then(function (data) {
+            if (data.teamType === "Engineer") {
+                getEngineerInfo()
+
+            }
+            else if (data.teamType === "Intern") {
+                getInternInfo()
+
+            }
+            else {
+                return console.log("Your team has been successfully created!!!")
+            }
+        })
+    })
+}
+
+function getEngineerInfo() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is your engineer's name?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is your engineer's id?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is your engineer's email?"
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "What is your engineer's GitHub username?"
+        },
+
+    ]
+    ).then(function (data) {
+        data["role"] = "Engineer";
+        teamMembers.push(data);
+    }).then(function () {
+        inquirer.prompt([
+            {
+                type: "list",
+                message: "Which type of team member would you like to add?",
+                name: "teamType",
+                choices: [
+                    "Engineer",
+                    "Intern",
+                    "I dont want to add any more team members"
+                ]
+            }
+        ]).then(function (data) {
+            if (data.teamType === "Engineer") {
+                getEngineerInfo()
+
+            }
+            else if (data.teamType === "Intern") {
+                getInternInfo()
+
+            }
+            else {
+                return console.log("Your team has been successfully created!!!")
+            }
+        })
+    })
+};
+
+function getInternInfo() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "What is your intern's name?"
+        },
+        {
+            type: "input",
+            name: "id",
+            message: "What is your intern's id?"
+        },
+        {
+            type: "input",
+            name: "email",
+            message: "What is your intern's email?"
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "What is your intern's school?"
+        },
+
+    ]
+    ).then(function (data) {
+        data["role"] = "Intern";
+        teamMembers.push(data);
+    }).then(function () {
+        inquirer.prompt([
+            {
+                type: "list",
+                message: "Which type of team member would you like to add?",
+                name: "teamType",
+                choices: [
+                    "Engineer",
+                    "Intern",
+                    "I dont want to add any more team members"
+                ]
+            }
+        ]).then(function (data) {
+            if (data.teamType === "Engineer") {
+                getEngineerInfo()
+
+            }
+            else if (data.teamType === "Intern") {
+                getInternInfo()
+
+            }
+            else {
+                return console.log("Your team has been successfully created!!!")
+            }
+        })
+    })
+};
 
 
 // Write code to use inquirer to gather information about the development team members,
